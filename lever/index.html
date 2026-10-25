@@ -31,10 +31,49 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="OnlyType" />
-    <script type="module" crossorigin src="./assets/index-CDnxS2LI.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BrpQcOdY.css">
+    <script type="module" crossorigin src="./assets/index-ETO4P8IE.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DwH3XL7C.css">
   </head>
   <body>
+    <!-- (R-343 출시 점검) 느린 망(3G)에서 앱 파일을 받는 동안 빈 흰 화면만 30초 — 1초 넘게 걸릴 때만 이름과 점 셋을 보임.
+         앱이 화면을 만들 때(bootstrap) 지움. 앱 CSS가 오기 전이라 여기서만 인라인 -->
+    <style>
+      .tw-boot {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: #f6f0e5;
+        color: #6b6257;
+        font:
+          15px/1.4 ui-monospace,
+          'Courier New',
+          monospace;
+        letter-spacing: 0.08em;
+        opacity: 0;
+        animation: tw-boot-in 400ms ease-out 1s forwards;
+      }
+      .tw-boot i {
+        font-style: normal;
+        animation: tw-boot-dot 1.2s steps(4, end) infinite;
+      }
+      @keyframes tw-boot-in {
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes tw-boot-dot {
+        from {
+          clip-path: inset(0 100% 0 0);
+        }
+        to {
+          clip-path: inset(0 0 0 0);
+        }
+      }
+    </style>
+    <div class="tw-boot" id="tw-boot" aria-hidden="true">
+      <span>OnlyType <i>...</i></span>
+    </div>
     <!-- DOM 골격(04 문서 9-1절)은 렌더러 조립 코드(app/bootstrap.ts, 코더 B)가 만든다. -->
   </body>
 </html>
