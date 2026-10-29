@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; connect-src 'self' https://barunco.pages.dev; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-visual"
+    />
+    <title>OnlyType</title>
+    <!-- (R-47 웹) 폰·아이패드 홈 화면에 추가하면 전체 화면 앱처럼 -->
+    <link rel="manifest" href="./manifest-dev.webmanifest" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="./icons/day-32.png?v=r348"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="./icons/night-32.png?v=r348"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=r348" />
+    <meta name="theme-color" content="#181615" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="OnlyType" />
+    <script type="module" crossorigin src="./assets/index-Dlo5MnyN.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-MHhjmYVv.css">
+  </head>
+  <body>
+    <!-- (R-343 출시 점검) 느린 망(3G)에서 앱 파일을 받는 동안 빈 흰 화면만 30초 — 1초 넘게 걸릴 때만 이름과 점 셋을 보임.
+         앱이 화면을 만들 때(bootstrap) 지움. 앱 CSS가 오기 전이라 여기서만 인라인 -->
+    <style>
+      .tw-boot {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: #f6f0e5;
+        color: #6b6257;
+        font:
+          15px/1.4 ui-monospace,
+          'Courier New',
+          monospace;
+        letter-spacing: 0.08em;
+        opacity: 0;
+        animation: tw-boot-in 400ms ease-out 1s forwards;
+      }
+      .tw-boot i {
+        font-style: normal;
+        animation: tw-boot-dot 1.2s steps(4, end) infinite;
+      }
+      @keyframes tw-boot-in {
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes tw-boot-dot {
+        from {
+          clip-path: inset(0 100% 0 0);
+        }
+        to {
+          clip-path: inset(0 0 0 0);
+        }
+      }
+    </style>
+    <div class="tw-boot" id="tw-boot" aria-hidden="true">
+      <span>OnlyType <i>...</i></span>
+    </div>
+    <!-- DOM 골격(04 문서 9-1절)은 렌더러 조립 코드(app/bootstrap.ts, 코더 B)가 만든다. -->
+  </body>
+</html>
